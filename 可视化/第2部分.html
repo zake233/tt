@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link href="./css/style.css" rel="stylesheet">
+    <script src="js/echarts.min.js"></script>
+    <script src="js/vintage.js"></script>
+</head>
+
+<body>
+  
+
+    <div class="part">
+        <div id="main" style="width: 1000px;height:600px;"></div>
+        <img src="./images/1-01_画板 1.jpg">
+    </div>
+
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var chartDom = document.getElementById('main');
+var myChart = echarts.init(chartDom);
+var option;
+        option = {
+  title: {
+    text: 'Stacked Line'
+  },
+  tooltip: {
+    trigger: 'axis'
+  },
+  legend: {
+    data: ['新疆', '东北——内蒙', '青藏高原', '全国']
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+
+  xAxis: {
+    type: 'category',
+    boundaryGap: false,
+    data: ['2002', '2003', '2004', '2005', '2006', '2007', '2008']
+  },
+  yAxis: {
+    type: 'value',
+    min: 0,max: 350 , interval: 50,axisLabel: { formatter: '{value} ' }
+  },
+  series: [
+  {
+      name: '全国',
+      type: 'line',
+      data: [320, 332, 301, 334, 341, 330, 320]
+    },
+    {
+      name: '新疆',
+      type: 'line',
+      stack: 'Total',
+      data: [50, 65, 40, 69, 80, 56,41 ]
+    },
+    {
+      name: '东北——内蒙',
+      type: 'line',
+      stack: 'Total',
+      data: [80, 110, 115, 100, 95, 90, 100]
+    },
+    {
+      name: '青藏高原',
+      type: 'line',
+      stack: 'Total',
+      data: [125, 100, 130, 154, 140, 90, 99]
+    },
+   
+  
+  ]
+};
+
+option && myChart.setOption(option);
+
+     
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>

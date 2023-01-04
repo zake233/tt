@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link href="./css/style.css" rel="stylesheet">
+    <script src="js/echarts.min.js"></script>
+    <script src="js/vintage.js"></script>
+</head>
+
+<body>
+    <header>
+        <a href="#">中国积雪可视化</a>
+        
+    </header>
+    <div class="banner">
+        <img src="./images/雪山2.png">
+    </div>
+
+    <div class="part">
+        <div id="main" style="width: 1000px;height:600px;"></div>
+        <img src="./images/1-01_画板 1.jpg">
+    </div>
+
+    <div class="part">
+        <img src="./images/2-01.jpg">
+        <div id="main2" style="width: 1000px;height:600px;"></div>
+    </div>
+    <div class="part">
+     
+       <div id="main10" style="height: 200px;width: 400px;"> <p>  我国积雪类型与我国气候带在空间分布上表现出较好的一致性。</p>
+        <p>  寒温带分布泰加林型积雪， 暖温带和亚热带主要分布瞬时型积雪， 高原寒带和高原亚寒带主要分布苔原型积雪</p>
+        <p>  高原温带和高原亚温带分布高山型和泰加林型积雪。中温带分布积雪类型较多， 大草原型积雪占主要部分， 并有部分苔原型、 高山型、 瞬时型和泰加林型积雪。</p></div>
+        <div id="main3" style="width: 1000px;height:400px;"></div>
+        
+    </div>
+
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var chartDom = document.getElementById('main');
+var myChart = echarts.init(chartDom);
+var option;
+        option = {
+  title: {
+    text: 'Stacked Line'
+  },
+  tooltip: {
+    trigger: 'axis'
+  },
+  legend: {
+    data: ['新疆', '东北——内蒙', '青藏高原', '全国']
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+
+  xAxis: {
+    type: 'category',
+    boundaryGap: false,
+    data: ['2002', '2003', '2004', '2005', '2006', '2007', '2008']
+  },
+  yAxis: {
+    type: 'value',
+    min: 0,max: 350 , interval: 50,axisLabel: { formatter: '{value} ' }
+  },
+  series: [
+  {
+      name: '全国',
+      type: 'line',
+      data: [320, 332, 301, 334, 341, 330, 320]
+    },
+    {
+      name: '新疆',
+      type: 'line',
+      stack: 'Total',
+      data: [50, 65, 40, 69, 80, 56,41 ]
+    },
+    {
+      name: '东北——内蒙',
+      type: 'line',
+      stack: 'Total',
+      data: [80, 110, 115, 100, 95, 90, 100]
+    },
+    {
+      name: '青藏高原',
+      type: 'line',
+      stack: 'Total',
+      data: [125, 100, 130, 154, 140, 90, 99]
+    },
+   
+  
+  ]
+};
+
+option && myChart.setOption(option);
+
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main2'));
+
+        // 指定图表的配置项和数据
+        option = {
+  color: ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'],
+  title: {
+    text: '积雪的年际变化'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      label: {
+        backgroundColor: '#6a7985'
+      }
+    }
+  },
+  legend: {
+    data: ['青藏高原', '伍道渠', '亚东帕里']
+  },
+  toolbox: {
+    feature: {
+      saveAsImage: {}
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      name:'月份',
+      type: 'category',
+      boundaryGap: false,
+      data: ['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12']
+    }
+  ],
+  yAxis: [
+    {
+        name:'积雪日数（天）',
+      type: 'value'
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value'
+    }
+  ],
+  series: [
+    {
+      name: '青藏高原',
+      type: 'line',
+      stack: 'Total',
+      smooth: true,
+      lineStyle: {
+        width: 0
+      },
+      showSymbol: false,
+      areaStyle: {
+        opacity: 0.8,
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgb(128, 255, 165)'
+          },
+          {
+            offset: 1,
+            color: 'rgb(1, 191, 236)'
+          }
+        ])
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [11,14,11,12,15,8,2,2, 8,15,11,12]
+    },
+    {
+      name: '伍道渠',
+      type: 'line',
+      stack: 'Total',
+      smooth: true,
+      lineStyle: {
+        width: 0
+      },
+      showSymbol: false,
+      areaStyle: {
+        opacity: 0.8,
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgb(0, 221, 255)'
+          },
+          {
+            offset: 1,
+            color: 'rgb(77, 119, 255)'
+          }
+        ])
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [6,8,7,9,11,12,3,3,9,10,6,5]
+    },
+    {
+      name: '亚东帕里',
+      type: 'line',
+      stack: 'Total',
+      smooth: true,
+      lineStyle: {
+        width: 0
+      },
+      showSymbol: false,
+      areaStyle: {
+        opacity: 0.8,
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: 'rgb(55, 162, 255)'
+          },
+          {
+            offset: 1,
+            color: 'rgb(116, 21, 219)'
+          }
+        ])
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [5,6,13,10,5,1,0,0,1,5,3,1]
+    },
+   
+  ]
+};
+
+option && myChart.setOption(option);
+
+
+        var myChart = echarts.init(document.getElementById('main3'));
+
+        // 指定图表的配置项和数据
+        var option = {
+           
+            title: {
+                text: '冬季积雪类型厚度统计',
+                subtext: '时间',
+                subtextStyle: {
+                    overflow: 'break'
+                },
+                top: 0
+            },
+            tooltip: {
+                trigger: 'axis',
+                triggerOn: 'mousemove' //鼠标移动显示
+
+            },
+            legend: {
+                data: ['max', 'min'],
+                orient: 'vewtral',
+                right: 200
+
+            },
+            grid: {
+                left: 50,
+                top: 10
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    dataView: {
+                        readOnly: false
+                    },
+                    magicType: {
+                        type: ['bar', 'bar']
+                    },
+                    restore: {},
+                    saveAsImage: {}
+                },
+                top: 0
+            },
+            xAxis: {
+                data: ['大草原型', '高山型', '苔原型', '泰加林型', '瞬时型'],
+                axisLabel: {
+                    fontSize: 10,
+                    color: 'black'
+
+                }
+            },
+            yAxis: {},
+            series: [{
+                    name: 'max',
+                    type: 'bar',
+                    data: [45.5, 63, 63, 35, 24],
+                    lineStyle: {
+                        width:10
+                    },
+
+                },
+
+                {
+                    name: 'min',
+                    type: 'bar',
+                    data: [1, 0.5, 3.0, 4.5, 6.7,],
+                    barStyle: {
+                        width: 20
+                    },
+                    label: {
+
+                        fontSize: 10,
+                        color: 'yellow'
+
+                    },
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>
